@@ -13,6 +13,41 @@ class UsersController extends Zend_Controller_Action
         // action body
     }
 
+    public function loginAction()
+    {
+        // action body
+    }
+
+    public function registerAction()
+    {
+        // action body
+    }
+
+    public function addAction()
+    {
+        // action body
+    }
+
+    public function listAction()
+    {
+        // action body
+    }
+
+    public function homeAction()
+    {
+        // action body
+    }
+
 
 }
+
+
+
+
+
+
+
+
+
+
 
