@@ -55,9 +55,9 @@ class Application_Model_Users extends Zend_Db_Table_Abstract
         return false;
 
 	}
-/*
+
     function banuser($id,$ban){
-        echo "gfdgd".$ban;
+        echo "check".$ban;
         if($ban==0)
         {
             $banned = array(
@@ -72,6 +72,6 @@ class Application_Model_Users extends Zend_Db_Table_Abstract
         return $this->update($banned, "id=".$id);
       
     }
-*/
+
 }
 

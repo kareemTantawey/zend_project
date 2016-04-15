@@ -110,7 +110,7 @@ class UsersController extends Zend_Controller_Action
         if (!$data) {
             $this->_redirect('users/login');
         }
-        $this->view->name = $data['name'];
+        //$this->view->users = $data['name'];
     }
 
     public function deleteAction()
