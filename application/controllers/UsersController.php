@@ -132,7 +132,7 @@ class UsersController extends Zend_Controller_Action
         $id = $this->_request->getParam("id");
        
         $form->getElement("password")->setRequired(false);
-        $form->getElement("image")->setRequired(false);
+       // $form->getElement("image")->setRequired(false);
         $form->removeElement("gender");
         $form->removeElement("email");
         $this->view->form = $form;
@@ -143,7 +143,7 @@ class UsersController extends Zend_Controller_Action
                 $user_info = $form->getValues();
                 $user_model = new Application_Model_Users();
                 
-                if($user_info["image"] !="")
+            /*    if($user_info["image"] !="")
                {
                     $user_model = new Application_Model_Users();
                     $users = $user_model->getUserById($id);
@@ -156,7 +156,7 @@ class UsersController extends Zend_Controller_Action
                     $upload->addFilter(new Zend_Filter_File_Rename(array('target' => $user_info["name"].$users[0]["id"].'.'.$ext)));                  
                     $upload->receive();
                     $user_info["image"]=$user_info["name"].$users[0]["id"].'.'.$ext;
-               }
+               }*/
                
 
              
@@ -177,17 +177,33 @@ class UsersController extends Zend_Controller_Action
         $this->render('add');
     }
 
-    public function preparedata($data) {
+    public function preparedata($data)
+    {
         $data['password'] = md5($data['password']);
         return $data;
     }
 
-    public function logoutAction() {
+    public function logoutAction()
+    {
         $this->_redirect('users/login');
+    }
+
+    public function banAction()
+    {
+        // action body
+        $user_model = new Application_Model_Users();
+        $id = $this->_request->getParam("id");
+        $ban = $this->_request->getParam("is_banned");
+        $user_model-> banuser($id,$ban);
+        //echo "bla bla bla";
+        
+    
     }
 
 
 }
+
+
 
 
 
