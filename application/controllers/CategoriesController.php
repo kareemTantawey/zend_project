@@ -62,6 +62,8 @@ class CategoriesController extends Zend_Controller_Action
         $category_model = new Application_Model_Categories();
         $this->view->categories = $category_model->listCategory();
         // call forums
+        $forum_model = new Application_Model_Forums();
+        $this->view->forums = $forum_model->listForum();
     }
      
     public function deleteAction()
@@ -170,7 +172,7 @@ class CategoriesController extends Zend_Controller_Action
         $id = $this->_request->getParam("id");
         if(!empty($id)){
             $img = $this->_request->getParam("img");
-            unlink("/var/www/html/zend_project/public/forum_images/$img");
+            unlink("/var/www/html/zend/zend_project/public/forum_images/$img");
             $forum_model = new Application_Model_Forums();
             $forum_model->deleteForum($id);
         }
@@ -199,10 +201,10 @@ class CategoriesController extends Zend_Controller_Action
                     $forum = $forum_model->getForumById($id);
                   
                     $imgName= $forum[0]['image'];
-                    unlink("/var/www/html/zend_project/public/forum_images/$imgName");
+                    unlink("/var/www/html/zend/zend_project/public/forum_images/$imgName");
                     $ext = pathinfo($forum_info["image"], PATHINFO_EXTENSION);
                     $upload = new Zend_File_Transfer_Adapter_Http();  
-                    $upload->setDestination("/var/www/html/zend_project/public/forum_images");
+                    $upload->setDestination("/var/www/html/zend/zend_project/public/forum_images");
                     $upload->addFilter(new Zend_Filter_File_Rename(array('target' => $forum_info["name"].$forum[0]["cat_id"].'.'.$ext)));                  
                     $upload->receive();
                     $forum_info["image"]=$forum_info["name"].$forum[0]["cat_id"].'.'.$ext;
