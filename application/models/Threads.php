@@ -51,17 +51,15 @@ class Application_Model_Threads extends Zend_Db_Table_Abstract
       
     }
     
-    function stickthread($id,$stik){
-      if($stik=='0')
+    function stickthread($id,$stick){
+      if($stick=='0')
         {
-            $sticky = array(
-           'is_sticky'      => '1');  
+            $sticky = array('is_sticky'      => '1');  
         }
         
-        if($stik=='1')
+        if($stick=='1')
         {
-            $sticky = array(
-           'is_sticky'      => '0');  
+            $sticky = array('is_sticky'      => '0');  
         }
         return $this->update($sticky, "id=".$id);
     }

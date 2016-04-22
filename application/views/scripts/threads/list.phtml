@@ -30,14 +30,14 @@
 </td>
 
         <td class="active" width='150px' >    
-<a href="<?php echo $this->baseUrl()?>/threads/lock/id/<?php echo $this->threads[$i]['id'];?>/lock/<?php echo $this->threads[$i]['is_locked'];?>/formId/<?php echo $this->threads[$i]['forum_id']?>" class="btn btn-warning btn-lg" > <?php if( $this->threads[$i]['is_locked'] == 0) echo "Lock"; else{ echo "Unlock";}?> </a>
+<a href="<?php echo $this->baseUrl()?>/threads/locked/id/<?php echo $this->threads[$i]['id'];?>/lock/<?php echo $this->threads[$i]['is_locked'];?>/formId/<?php echo $this->threads[$i]['forum_id']?>" class="btn btn-warning btn-lg" > <?php if( $this->threads[$i]['is_locked'] == 0) echo "Lock"; else{ echo "Unlock";}?> </a>
 
 </td>
 
-       <td class="active" width='150px' >    
-<a href="<?php echo $this->baseUrl()?>/threads/sticky/id/<?php echo $this->threads[$i]['id'];?> /formId/<?php echo $this->threads[$i]['forum_id']?>" class="btn btn-warning btn-lg" > <?php if( $this->threads[$i]['is_sticky'] == 0) echo "Not Sticky"; else{ echo "Sticky";}?> </a>
+       <!-- <td class="active" width='150px' >    
+<a href="<?php echo $this->baseUrl()?>/threads/sticky/id/<?php echo $this->threads[$i]['id'];?> /sticky/<?php echo $this->threads[$i]['is_sticky'];?>/formId/<?php echo $this->threads[$i]['forum_id']?>"  class="btn btn-warning btn-lg" > <?php if( $this->threads[$i]['is_sticky'] == 0) echo "Not Sticky"; else{ echo "Sticky";}?> </a>
 
-</td>
+</td> -->
     </tr>
     
     <?php
@@ -56,7 +56,7 @@ for($i = 0; $i<count($this->threads); $i++){
             
         </td>
     <td class="danger">
-<a href="<?php echo $this->baseUrl()?>/threads/view-thread/id/<?php echo $this->threads[$i]['id'];?>" class="text-danger"> <?php echo $this->threads[$i]["title"];?></a>
+<a href="<?php echo $this->baseUrl()?>/threads/view/id/<?php echo $this->threads[$i]['id'];?>" class="text-danger"> <?php echo $this->threads[$i]["title"];?></a>
     </td>
 
  <td class="success" width='150px'>    
@@ -74,10 +74,10 @@ for($i = 0; $i<count($this->threads); $i++){
 
 </td>
 
-       <td class="active" width='150px' >    
+     <!--   <td class="active" width='150px' >    
 <a href="<?php echo $this->baseUrl()?>/threads/sticky/id/<?php echo $this->threads[$i]['id'];?> /formId/<?php echo $this->threads[$i]['forum_id']?>" class="btn btn-warning btn-lg" > <?php if( $this->threads[$i]['is_sticky'] == 0) echo "Not Sticky"; else{ echo "Sticky";}?> </a>
 
-</td>
+</td> -->
     </tr>
 <?php
 

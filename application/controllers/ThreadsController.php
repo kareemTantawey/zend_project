@@ -139,9 +139,9 @@ class ThreadsController extends Zend_Controller_Action
     {
         $thread_model = new Application_Model_Threads();
         $id = $this->_request->getParam("id");
-        $stiky = $this->_request->getParam("is_sticky");
+        $stick = $this->_request->getParam("stick");
         $formId = $this->_request->getParam("formId");
-        $this->view->forums = $thread_model->stickthread($id,$stiky);
+        $this->view->forums = $thread_model->stickthread($id,$stick);
         $this->redirect("threads/list/id/$formId");
     }
 
