@@ -23,6 +23,30 @@
           <actionMethod actionName="logout"/>
           <actionMethod actionName="ban"/>
         </controllerFile>
+        <controllerFile controllerName="Categories">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="add"/>
+          <actionMethod actionName="list"/>
+          <actionMethod actionName="main"/>
+        </controllerFile>
+        <controllerFile controllerName="Forums">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="list"/>
+          <actionMethod actionName="add"/>
+        </controllerFile>
+        <controllerFile controllerName="Threads">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="add"/>
+          <actionMethod actionName="edit"/>
+          <actionMethod actionName="list"/>
+          <actionMethod actionName="view"/>
+        </controllerFile>
+        <controllerFile controllerName="Replies">
+          <actionMethod actionName="index"/>
+          <actionMethod actionName="add"/>
+          <actionMethod actionName="delete"/>
+          <actionMethod actionName="edit"/>
+        </controllerFile>
       </controllersDirectory>
       <formsDirectory>
         <formFile formName="Registration"/>
@@ -30,6 +54,10 @@
         <formFile formName="Users"/>
         <formFile formName="Categories"/>
         <formFile formName="Category"/>
+        <formFile formName="Forums"/>
+        <formFile formName="Threads"/>
+        <formFile formName="Thread"/>
+        <formFile formName="Reply"/>
       </formsDirectory>
       <layoutsDirectory>
         <layoutScriptsDirectory>
@@ -41,6 +69,9 @@
         <modelFile modelName="Registration"/>
         <modelFile modelName="Users"/>
         <modelFile modelName="Categories"/>
+        <modelFile modelName="Forums"/>
+        <modelFile modelName="Threads"/>
+        <modelFile modelName="Replies"/>
       </modelsDirectory>
       <modulesDirectory enabled="false"/>
       <servicesDirectory enabled="false"/>
@@ -81,6 +112,54 @@
           </viewControllerScriptsDirectory>
           <viewControllerScriptsDirectory forControllerName="Users">
             <viewScriptFile forActionName="ban"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Categories">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Categories">
+            <viewScriptFile forActionName="add"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Categories">
+            <viewScriptFile forActionName="list"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Categories">
+            <viewScriptFile forActionName="main"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Forums">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Forums">
+            <viewScriptFile forActionName="list"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Forums">
+            <viewScriptFile forActionName="add"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Threads">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Threads">
+            <viewScriptFile forActionName="add"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Threads">
+            <viewScriptFile forActionName="edit"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Threads">
+            <viewScriptFile forActionName="list"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Threads">
+            <viewScriptFile forActionName="view"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Replies">
+            <viewScriptFile forActionName="index"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Replies">
+            <viewScriptFile forActionName="add"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Replies">
+            <viewScriptFile forActionName="delete"/>
+          </viewControllerScriptsDirectory>
+          <viewControllerScriptsDirectory forControllerName="Replies">
+            <viewScriptFile forActionName="edit"/>
           </viewControllerScriptsDirectory>
         </viewScriptsDirectory>
         <viewHelpersDirectory/>
