@@ -9,7 +9,7 @@ class ThreadsController extends Zend_Controller_Action
         $authorization =Zend_Auth::getInstance();
         if(!$authorization->hasIdentity()) 
         {           
-            $this->redirect("error/error");
+            $this->redirect("users/login");
         }
     }
 
@@ -87,13 +87,13 @@ class ThreadsController extends Zend_Controller_Action
                 var_dump($thread_info);
                 $thread_model = new Application_Model_Threads();
                 $thread_model->editThread($thread_info);
-                $this->redirect("threads/view-thread/id/$id");
+                $this->redirect("threads/view/id/$id");
             }
             if (!empty($id)) {
                 $thread_info = $form->getValues();
                 $form->populate($thread_info);
             } else
-                $this->redirect("threads/view-thread/id/$id");
+                $this->redirect("threads/view/id/$id");
         }else {
             $thread_model = new Application_Model_Threads();
             $thread = $thread_model->getThreadById($id);
@@ -139,8 +139,9 @@ class ThreadsController extends Zend_Controller_Action
     {
         $thread_model = new Application_Model_Threads();
         $id = $this->_request->getParam("id");
+        $stiky = $this->_request->getParam("is_sticky");
         $formId = $this->_request->getParam("formId");
-        $this->view->forums = $thread_model->stickthread($id);
+        $this->view->forums = $thread_model->stickthread($id,$stiky);
         $this->redirect("threads/list/id/$formId");
     }
 

@@ -19,9 +19,10 @@ class Application_Form_Reply extends Zend_Form
         $submit->setLabel("Add Reply");
         $submit->setAttrib("class", "btn btn-primary");
         
-        $this->addElements(array($reply, $submit));
-
         $id = new Zend_Form_Element_Hidden("id");
+        $this->addElements(array($id, $reply, $submit));
+
+        
     }
 
 

@@ -9,7 +9,7 @@ class ForumsController extends Zend_Controller_Action
         $authorization =Zend_Auth::getInstance();
         if(!$authorization->hasIdentity()) 
         {           
-            $this->redirect("error/error");
+            $this->redirect("users/login");
         }
     }
 

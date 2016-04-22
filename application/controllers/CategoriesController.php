@@ -10,7 +10,7 @@ class CategoriesController extends Zend_Controller_Action
         if(!$authorization->hasIdentity()){
             # code...
                    
-            $this->redirect("error/error");
+            $this->redirect("users/login");
         }
     }
 

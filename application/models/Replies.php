@@ -34,7 +34,7 @@ class Application_Model_Replies extends Zend_Db_Table_Abstract
     
     function getRepliesByThreadId($thread_id) {
         
-        $replies = $this->select()->where("thread_id = $thread_id");
+        $replies = $this->select()->where("thread_id = '$thread_id'");
         return $this->fetchAll($replies)->toArray();
     }
 
