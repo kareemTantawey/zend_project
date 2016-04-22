@@ -11,7 +11,8 @@ class Application_Form_Login extends Zend_Form
        
         $email = $this->createElement('text','email');
         $email->setLabel('Email: *')
-                ->setRequired(true);
+                ->setRequired(true)
+                ->addFilter('StripTags');
 
        $email->setAttrib("class", "form-control");
        $email->setAttrib("placeholder", "Email");
@@ -19,6 +20,7 @@ class Application_Form_Login extends Zend_Form
         $password = $this->createElement('password','password');
         $password->setLabel('Password:')
                 ->setRequired(true);
+
         $password->setAttrib("class", "form-control");
         $password->setAttrib("placeholder", "Password");
 

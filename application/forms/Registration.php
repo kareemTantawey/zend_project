@@ -43,7 +43,7 @@ class Application_Form_Registration extends Zend_Form
         $image->setLabel("Upload Image ")
             ->setRequired(true)               
             ->addValidator('Extension',false,'jpg,png,gif,jpeg')
-            ->setDestination("../public/profile_images")
+            ->setDestination("/var/www/html/zend/zend_project/public/profile_images")
             ->addValidator('Count',false,1) //ensure only 1 file
             ->addValidator('Size',false,102400*100) //limit to 100K
             ->getValidator('Extension')->setMessage('This file type is not supportted.');
