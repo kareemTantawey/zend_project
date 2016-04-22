@@ -188,16 +188,14 @@ class UsersController extends Zend_Controller_Action
         $this->_redirect('users/login');
     }
 
-    public function banAction()
+     public function banAction()
     {
-        // action body
-        $user_model = new Application_Model_Users();
+        $form = new Application_Form_Users();
+        $users_model = new Application_Model_Users();
         $id = $this->_request->getParam("id");
-        $ban = $this->_request->getParam("is_banned");
-        $user_model-> banuser($id,$ban);
-        //echo "bla bla bla";
-        
-    
+        $ban = $this->_request->getParam("ban");
+        $this->view->users = $users_model->banuser($id,$ban);
+        $this->redirect("users/list");
     }
 
 

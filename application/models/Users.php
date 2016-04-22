@@ -56,21 +56,21 @@ class Application_Model_Users extends Zend_Db_Table_Abstract
 
 	}
 
+    
     function banuser($id,$ban){
-        
-        if($ban == '0')
+        echo "gfdgd".$ban;
+        if($ban==0)
         {
-            $banned = array('is_banned' => 1);  
-            return $this->update($banned, "id=".$id);
+            $banned = array(
+           'is_banned'      => '1');  
         }
-        else
-        {
-            $banned = array('is_banned' => 0);
-            echo "changed" .$ban;  
-            return $this->update($banned, "id=".$id);
-        }
-        echo "changed";
         
+        if($ban==1)
+        {
+            $banned = array(
+           'is_banned'      => '0');  
+        }
+        return $this->update($banned, "id=".$id);
       
     }
 

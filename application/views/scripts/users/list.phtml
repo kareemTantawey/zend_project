@@ -27,10 +27,8 @@
             </td>
 
             <td class="active" width='150px' >    
-                <a href="<?php echo $this->baseUrl() ?>/users/ban/id/<?php echo $this->users[$i]['id']; ?>/ban/<?php echo $this->users[$i]['is_banned']; ?>" class="btn btn-warning btn-lg" > <?php if ($this->users[$i]['is_banned'] == 0) echo "banned";
-    else {
-        echo "Unban";
-    } ?> </a>
+                <a href="<?php echo $this->baseUrl() ?>/users/ban/id/<?php echo $this->users[$i]['id']; ?>/ban/<?php echo $this->users[$i]['is_banned']; ?>" class="btn btn-warning btn-lg" > <?php if ($this->users[$i]['is_banned'] == 0) echo "banned";else {echo "Unban";} ?> </a>
+                
 
             </td>
         </tr>
