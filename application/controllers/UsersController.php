@@ -44,7 +44,7 @@ class UsersController extends Zend_Controller_Action
             if ($result->isValid()) {
                 $auth = Zend_Auth::getInstance();
                 $storage = $auth->getStorage();
-                $storage->write($authAdapter->getResultRowObject(array('email','password')));
+                $storage->write($authAdapter->getResultRowObject(array('email','password','name')));
                 $this->_redirect('categories/main');
                 echo "welcome";
             }
