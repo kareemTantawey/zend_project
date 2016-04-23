@@ -14,11 +14,13 @@ class UsersController extends Zend_Controller_Action
     public function init()
     {
         /* Initialize action controller here */
+
     }
 
     public function indexAction()
     {
         // action body
+
     }
 
     public function loginAction()
@@ -32,6 +34,7 @@ class UsersController extends Zend_Controller_Action
         if ($login_form->isValid($_POST)) {
             $email = $this->_request->getParam('email');
             $password = $this->_request->getParam('password');
+            $username = $this->_request->getParam('name');
             $db = Zend_Db_Table::getDefaultAdapter();
             $authAdapter = new Zend_Auth_Adapter_DbTable($db, 'users', 'email', 'password');
 
@@ -41,8 +44,8 @@ class UsersController extends Zend_Controller_Action
             if ($result->isValid()) {
                 $auth = Zend_Auth::getInstance();
                 $storage = $auth->getStorage();
-                $storage->write($authAdapter->getResultRowObject(array('email', 'password')));
-                $this->_redirect('users/list');
+                $storage->write($authAdapter->getResultRowObject(array('email','password')));
+                $this->_redirect('categories/main');
                 echo "welcome";
             }
         }
@@ -98,6 +101,13 @@ class UsersController extends Zend_Controller_Action
     public function listAction()
     {
         // action body
+        $authorization =Zend_Auth::getInstance();
+        if(!$authorization->hasIdentity()) 
+        {           
+            $this->redirect("users/login");
+        }
+
+
         $user_model = new Application_Model_Users();
         $this->view->users = $user_model->listUsers();
     }
@@ -143,23 +153,8 @@ class UsersController extends Zend_Controller_Action
                 $user_info = $form->getValues();
                 $user_model = new Application_Model_Users();
                 
-            /*    if($user_info["image"] !="")
-               {
-                    $user_model = new Application_Model_Users();
-                    $users = $user_model->getUserById($id);
-                  
-                    $imgName= $users[0]['image'];
-                    unlink("/var/www/html/zend/zend_project/public/profile_images/$imgName");
-                    $ext = pathinfo($user_info["image"], PATHINFO_EXTENSION);
-                    $upload = new Zend_File_Transfer_Adapter_Http();  
-                    $upload->setDestination("/var/www/html/zend/zend_project/public/profile_images");
-                    $upload->addFilter(new Zend_Filter_File_Rename(array('target' => $user_info["name"].$users[0]["id"].'.'.$ext)));                  
-                    $upload->receive();
-                    $user_info["image"]=$user_info["name"].$users[0]["id"].'.'.$ext;
-               }*/
-               
-
-             
+            
+            
                 $user_model->editUser($user_info);
                 $this->redirect("users/list");
             }
@@ -185,6 +180,8 @@ class UsersController extends Zend_Controller_Action
 
     public function logoutAction()
     {
+        $user = Zend_Auth::getInstance();
+        $user->clearIdentity();
         $this->_redirect('users/login');
     }
 
