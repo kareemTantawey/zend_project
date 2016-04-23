@@ -1,3 +1,7 @@
+<style>
+    a:link, a:visited {
+    color: #0f0e0c;}
+</style>
 <br /><br />
 <div id="view-content">
     <p>View script for controller <b>categories</b> and script/action name <b>main</b></p>
@@ -6,50 +10,63 @@
 <div class="container">
 
     <?php for ($j = 0; $j < count($this->categories); $j++) { ?>
-        <table class="table table-hover">
-            <tr>
+                <!--        <table class="table table-striped">-->
+                <!--            <tr>
+                            <thead class="thead-default">
+                            <th  width='120px' height='60px'>
+                                    <img src="/zend/zend_project/public/category_images/<?php echo $this->categories[$j]['image']; ?>" class="img-circle"  width="100" height="50px"/>
 
-                <td  class="info" width='120px' height='60px'>
-                    <img src="/zend/zend_project/public/category_images/<?php echo $this->categories[$j]['image']; ?>" class="img-circle"  width="100" height="50px"/>
+                                </th>
 
-                </td>
+                                <th>
+                                    <a href="<?php echo $this->baseUrl() ?>/forums/list/id/<?php echo $this->categories[$j]['id']; ?>" > <?php echo $this->categories[$j]["name"]; ?> </a>
 
-                <td  class="danger" >
-                    <a href="<?php echo $this->baseUrl() ?>/forums/list/id/<?php echo $this->categories[$j]['id']; ?>" > <?php echo $this->categories[$j]["name"]; ?> </a>
-
-                </td>
-
-
-            </tr>
-            <?php
-            for ($i = 0; $i < count($this->forums); $i++) {
-                if ($this->forums[$i]['cat_id'] == $this->categories[$j]['id']) {
-                    ?>
-                    <tr>
-                        <td  class="info" width='120px' height='60px'>
-                            <img src="/zend/zend_project/public/forum_images/<?php echo $this->forums[$i]['image']; ?>" class="img-circle"  width="100" height="50px"/>
-
-                        </td>
-                        <td class="danger">
-                            <a href="<?php echo $this->baseUrl() ?>/threads/list/id/<?php echo $this->forums[$i]['id']; ?>" class="text-danger"> <?php echo $this->forums[$i]["name"]; ?></a>
-                        </td>
+                                </th>
 
 
-                        </td>
-
-                        <td class="active" width='150px' >    
-                            <a href="<?php echo $this->baseUrl() ?>/categories/lockforum/id/<?php echo $this->forums[$i]['id']; ?>/lock/<?php echo $this->forums[$i]['is_locked']; ?>" class="btn btn-warning btn-lg" > <?php if ($this->forums[$i]['is_locked'] == 0) echo "Lock";
-            else {
-                echo "Unlock";
-            } ?> </a>
-
-                        </td>
-                    </tr>
+                                </tr>
+                                </thead>-->
+        <div class='panel panel-default'>
+            <div class='panel-heading center'><img src="/zend/zend_project/public/category_images/<?php echo $this->categories[$j]['image']; ?>" class="img-circle"  width="100" height="50px"/>
+                            <a href="<?php echo $this->baseUrl() ?>/forums/list/id/<?php echo $this->categories[$j]['id']; ?>" > <?php echo $this->categories[$j]["name"]; ?> </a>
+    
+            </div>
+            <div class='panel-body'>
+                <div class="panel-footer"></div>
+                <table class="table table-striped">
                     <?php
-                }
-            }
-            echo '</table> <br> <br>';
-        }
-        ?>
+                    for ($i = 0; $i < count($this->forums); $i++) {
+                        if ($this->forums[$i]['cat_id'] == $this->categories[$j]['id']) {
+                            ?>
+                            <tr>
+                                <td   width='120px' height='60px'>
+                                    <img src="/zend/zend_project/public/forum_images/<?php echo $this->forums[$i]['image']; ?>" class="img-circle"  width="100" height="50px"/>
 
-</div>
+                                </td>
+                                <td >
+                                    <a href="<?php echo $this->baseUrl() ?>/threads/list/id/<?php echo $this->forums[$i]['id']; ?>" class="text-danger"> <?php echo $this->forums[$i]["name"]; ?></a>
+                                </td>
+
+
+                                </td>
+
+                                <td class="active" width='150px' >    
+                                    <a href="<?php echo $this->baseUrl() ?>/categories/lockforum/id/<?php echo $this->forums[$i]['id']; ?>/lock/<?php echo $this->forums[$i]['is_locked']; ?>" class="btn btn-warning btn-lg" > <?php
+                                        if ($this->forums[$i]['is_locked'] == 0)
+                                            echo "Lock";
+                                        else {
+                                            echo "Unlock";
+                                        }
+                                        ?> </a>
+
+                                </td>
+                            </tr>
+
+                            <?php
+                        }
+                    }
+                    echo '</table> <br> <br>';
+                }
+                ?>
+
+        </div>
