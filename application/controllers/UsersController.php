@@ -72,7 +72,7 @@ class UsersController extends Zend_Controller_Action
                 }
 
                 $register_model->insert($data);
-                //$accept=$this->sendConfirmationEmail($data);
+                
                
                  $this->redirect('users/login');        
             

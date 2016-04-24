@@ -49,8 +49,11 @@ class ForumsController extends Zend_Controller_Action
                     
                }       
            }
+           $this->redirect("categories/main");
         }
         $this->view->form = $form;
+
+
     }
 
 

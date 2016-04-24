@@ -23,22 +23,20 @@ class ThreadsController extends Zend_Controller_Action
     {
         // action body
         $forum_id = $this->getRequest()->getParam("forum_id");
+        $forum_id = $this->getRequest()->getParam("user_id");
+
         $form = new Application_Form_Thread();
+
 
         if ($this->_request->isPost() && $forum_id) {
             if ($form->isValid($this->_request->getParams())) {
                 $thread_info = $form->getValues();
                 $thread_info["forum_id"] = $forum_id;
-                $thread_info["user_id"] = 9;
+                $thread_info["user_id"] = $user_id;
+                //$thread_info["user_id"] = 9;
                 if ($thread_info["image"] != NULL) {
                     $ext = pathinfo($thread_info["image"], PATHINFO_EXTENSION);
-                    $string = rand();
-                    $arr = range('a', 'z');
-                    $x = rand(0, sizeof($arr) - 1);
-                    $y = rand(0, sizeof($arr) - 1);
-                    $z = rand(0, sizeof($arr) - 1);
-                    $string .= $arr[$x] . $arr[$y] . $arr[$z] . '.' . $ext;
-                    $ext = pathinfo($thread_info["image"], PATHINFO_EXTENSION);
+                    
                     $upload = new Zend_File_Transfer_Adapter_Http();
                     $upload->setDestination("/var/www/html/zend/zend_project/public/thread_images");
                     $upload->addFilter(new Zend_Filter_File_Rename(array('target' => $string)));
@@ -51,6 +49,7 @@ class ThreadsController extends Zend_Controller_Action
                 $thread_model = new Application_Model_Threads();
                $thread_model->addThread($thread_info);
             }
+            $this->redirect("categories/main");
         }
 
         $this->view->form = $form;
